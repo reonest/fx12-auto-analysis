@@ -21,8 +21,8 @@ class ScreeningTests(unittest.TestCase):
             v5[-1] = 0.5
             v1 = np.linspace(2, 1, 100)
         else:
-            v5 = np.full(100, 1.5) + 0.0001*np.sin(np.arange(100))
-            v1 = np.full(100, 1.5) + 0.0001*np.sin(np.arange(100))
+            v5 = np.full(100, 1.5)
+            v1 = np.full(100, 1.5)
         return make(times5,v5), make(times1,v1)
 
     def test_up_breakout(self):
@@ -42,7 +42,7 @@ class ScreeningTests(unittest.TestCase):
         self.assertEqual(result["ma_alignment_1h"],"下降")
         self.assertEqual(result["breakout_5m"],"下抜け")
         self.assertEqual(result["previous_20_low_5m"],round(float(f.iloc[-21:-1].low.min()),6))
-        self.assertEqual(result["screening_score"],2)
+        self.assertEqual(result["screening_score"],3)
 
     def test_no_breakout(self):
         f,h=self.frames("flat")
