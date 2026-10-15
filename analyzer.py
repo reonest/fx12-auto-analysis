@@ -71,6 +71,15 @@ def summary(pair, five, hourly):
     direction = '上昇' if b.close > b.ma25 > b.ma75 else '下降' if b.close < b.ma25 < b.ma75 else '混在'
     momentum = '上向き' if a.macd_hist > 0 else '下向き'
     atr_pct = float(a.atr14 / a.close * 100)
+    # Supplementary signals: do not change the legacy screening score.
+    # A rising market can be classified as '混在' by the legacy MA25/MA75 rule.
+    ma_alignment_1h = ('上昇' if b.ma5 > b.ma25 > b.ma75 else
+                       '下降' if b.ma5 < b.ma25 < b.ma75 else '混在')
+    previous_20 = f.iloc[-21:-1]
+    high_20 = float(previous_20.high.max())
+    low_20 = float(previous_20.low.min())
+    breakout_5m = ('上抜け' if a.close > high_20 else
+                   '下抜け' if a.close < low_20 else 'なし')
     score = (2 if direction != '混在' else 0) + (1 if (direction == '上昇' and momentum == '上向き') or (direction == '下降' and momentum == '下向き') else 0)
     return {
         'pair': pair, 'yahoo_symbol': SYMBOLS[pair], 'status': 'OK',
@@ -82,6 +91,10 @@ def summary(pair, five, hourly):
         'ma5_1h': round(float(b.ma5), 6), 'ma25_1h': round(float(b.ma25), 6),
         'ma75_1h': round(float(b.ma75), 6),
         'trend_1h': direction, 'momentum_5m': momentum, 'screening_score': score,
+        'ma_alignment_1h': ma_alignment_1h,
+        'previous_20_high_5m': round(high_20, 6),
+        'previous_20_low_5m': round(low_20, 6),
+        'breakout_5m': breakout_5m,
         'note': '候補選考のみ。SBI実勢Bid/Ask、注文仕様、指標、SL/TP未検証。'
     }
 
