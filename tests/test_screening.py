@@ -1,4 +1,4 @@
-"""Regression tests for supplemental FX screening fields (no network calls)."""\n
+"""Regression tests for supplemental FX screening fields (no network calls)."""
 import unittest
 from unittest.mock import patch
 import numpy as np
