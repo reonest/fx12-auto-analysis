@@ -19,3 +19,23 @@ jobs:
       - run: pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
       - run: python -m py_compile analyzer.py site.py
+      - name: Generate live 12-pair screening data
+        run: python analyzer.py --out fx12_test_output
+      - name: Validate generated JSON and dashboard
+        run: |
+          python site.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path("fx12_test_output/fx12_screening.json").read_text(encoding="utf-8"))
+          assert len(data["results"]) == 12, "Expected all 12 pairs"
+          required = {"ma_alignment_1h", "previous_20_high_5m", "previous_20_low_5m", "breakout_5m"}
+          ok = [r for r in data["results"] if r["status"] == "OK"]
+          assert len(ok) >= 10, f"Only {len(ok)} pairs available"
+          for r in ok:
+              assert required <= r.keys(), f"Missing fields for {r['pair']}"
+              assert r["previous_20_high_5m"] >= r["previous_20_low_5m"]
+              assert r["ma_alignment_1h"] in ("上昇", "下降", "混在")
+              assert r["breakout_5m"] in ("上抜け", "下抜け", "なし")
+          print("PASS:", len(ok), "/12 pairs; new fields validated")
+          PY
