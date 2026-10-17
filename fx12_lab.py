@@ -332,6 +332,32 @@ def main():
         rows.append(result)
     ranking=sorted((x for x in rows if x["role"]=="FORMAL_12"),
                    key=lambda x:(-x["three_methods"]["score"],x["pair"]))
+    # Record unexecuted research signals separately from real and user-defined virtual trades.
+    signals=[]
+    for r in rows:
+        if r["role"] != "FORMAL_12":
+            continue
+        methods=r["three_methods"]
+        for name in ("trend_breakout", "range_reversal"):
+            if methods.get(name) != "条件付き候補":
+                continue
+            signals.append({
+                "category":"UNEXECUTED_RESEARCH_SIGNAL", "pair":r["pair"],
+                "method":name, "market_status":r["market_status"],
+                "generated_utc":iso(now),
+                "source":r["source"],
+                "last_10m_close_utc":r["frames"]["10m"].get("candle_closed_utc"),
+                "direction_reference":methods.get("overall"),
+                "environment_reference":methods.get("environment"),
+                "entry_order_placed":False, "entry_price_confirmed":False,
+                "take_profit_confirmed":False, "stop_loss_confirmed":False,
+                "actual_pnl_jpy":None, "outcome":"UNVERIFIED",
+                "cannot_infer_fill_sequence_from_ohlc":True})
+    signals_path=Path(args.output).parent/"fx12_unexecuted_signals.json"
+    signals_path.write_text(json.dumps({"generated_utc":iso(now),
+        "signals":signals,"not_real_trades":True,
+        "history_note":"Per-run snapshots only; longitudinal evaluation requires retained runs."
+        },ensure_ascii=False,indent=2),encoding="utf-8")
     context={"generated_utc":iso(now), "generated_jst":jst(now),
              "market_time_analysis":market_clock(now),
              "status":"RESEARCH_NOT_ORDER",
@@ -344,6 +370,7 @@ def main():
                "environment":r["three_methods"]["environment"],
                "source":r["source"]} for r in ranking if r["three_methods"]["score"]>0][:3],
              "hourly_return_correlations":correlations(available,raw),
+             "unexecuted_research_signals":signals,
              "currency_strength_note":"CHF unavailable in monitored data; do not fabricate 8-currency ranking",
              "events_and_news":events,
              "news_alert_policy":"Never mark old/undated headlines as fresh/S-grade. RSS alone not enough for S-grade.",
