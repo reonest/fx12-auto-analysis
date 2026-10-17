@@ -20,7 +20,7 @@ from fx12_events import collect_events
 UTC = timezone.utc
 JST = ZoneInfo("Asia/Tokyo")
 EXTRA = "AUD/NZD"
-HELPER = "CAD/JPY"  # not a 13th formal trading target
+HELPERS = ("CAD/JPY", "NZD/JPY", "CHF/JPY")  # internal currency-strength inputs, not trading targets
 SYNTH = {"USD/CAD": ("USD/JPY", "CAD/JPY"),
          "EUR/AUD": ("EUR/JPY", "AUD/JPY"),
          "GBP/AUD": ("GBP/JPY", "AUD/JPY")}
@@ -252,6 +252,50 @@ def correlations(rows, raw):
     return sorted(output, key=lambda x: -abs(x["correlation"]))[:30]
 
 
+def eight_currency_strength(gmo_raw, now):
+    """24h relative performance from a common 1h close timestamp across seven GMO JPY crosses.
+
+    Normalizes 8 log returns to an equal-weight eight-currency basket.
+    This is a relative observation, NOT tradeable prices and NOT a live quote.
+    """
+    currencies = ("USD", "JPY", "EUR", "GBP", "AUD", "NZD", "CAD", "CHF")
+    cross = {ccy: gmo_raw.get(ccy + "/JPY", {}).get("1h")
+             for ccy in currencies if ccy != "JPY"}
+    if any(df is None or len(df)<30 for df in cross.values()):
+        return {"status": "INSUFFICIENT_GMO_JPY_CROSSES", "currencies": list(currencies)}
+    shared = None
+    for df in cross.values():
+        shared = df.index if shared is None else shared.intersection(df.index)
+    if len(shared) < 25:
+        return {"status": "NOT_TIME_ALIGNED", "currencies": list(currencies)}
+    end = shared[-1]
+    start = end - pd.Timedelta(hours=24)
+    if start not in shared:
+        return {"status": "NO_EXACT_24H_COMMON_REFERENCE", "currencies": list(currencies),
+                "latest_open_utc": iso(end.to_pydatetime())}
+    raw_changes = {"JPY": 0.0}
+    for ccy, df in cross.items():
+        a = float(df.loc[start, "close"])
+        b = float(df.loc[end, "close"])
+        if a <= 0 or b <= 0:
+            return {"status":"INVALID_CROSS_RATE"}
+        raw_changes[ccy] = math.log(b/a)
+    average = sum(raw_changes.values()) / len(currencies)
+    strength = [{"currency": ccy,
+                 "relative_to_equal_weight_basket_pct": round(100*(math.exp(raw_changes[ccy]-average)-1),4)}
+                for ccy in currencies]
+    strength.sort(key=lambda item:-item["relative_to_equal_weight_basket_pct"])
+    last_close=end.to_pydatetime()+timedelta(hours=1)
+    return {"status":"OK_HISTORICAL_RELATIVE_STRENGTH", "currency_count":len(strength),
+            "basket":"USD,JPY,EUR,GBP,AUD,NZD,CAD,CHF equal-weight normalization",
+            "data_source":"GMO Coin FX JPY crosses 1hour Bid close, all same timestamp",
+            "reference_hours":24, "from_close_utc":iso(start.to_pydatetime()+timedelta(hours=1)),
+            "to_close_utc":iso(last_close),
+            "to_close_jst":jst(last_close),
+            "age_minutes_at_generation":round((now-last_close).total_seconds()/60),
+            "ranked":strength, "not_a_probability_or_trade_signal":True}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", default="trial_output/fx12_ai_context.json")
@@ -260,7 +304,7 @@ def main():
     args = parser.parse_args()
     now = datetime.now(UTC)
     pairs = PAIRS + [EXTRA]
-    available = pairs + [HELPER] if args.all_pairs else ["USD/JPY", "EUR/USD", "MXN/JPY", EXTRA, HELPER]
+    available = pairs + list(HELPERS) if args.all_pairs else ["USD/JPY", "EUR/USD", "MXN/JPY", EXTRA, "CAD/JPY"]
     session = requests.Session()
     session.headers.update({"Accept": "application/json", "User-Agent": "fx12-lab/0.1"})
     try:
@@ -363,7 +407,8 @@ def main():
              "market_time_analysis":market_clock(now),
              "status":"RESEARCH_NOT_ORDER",
              "data_plan":"GMO_COIN_FX_FIRST_YAHOO_FALLBACK", "gmo_ticker_status":ticker_status,
-             "formal_pairs":12, "research_pair":EXTRA, "extra_helper_pair":HELPER,
+             "formal_pairs":12, "research_pair":EXTRA, "extra_helper_pairs":list(HELPERS),
+             "eight_currency_strength":eight_currency_strength(gmo_raw,now),
              "pairs":rows,"top_candidates":[{"pair":r["pair"],
                "score_experimental":r["three_methods"]["score"],
                "market_status":r["market_status"], "not_an_order_signal":True,
@@ -372,7 +417,7 @@ def main():
                "source":r["source"]} for r in ranking if r["three_methods"]["score"]>0][:3],
              "hourly_return_correlations":correlations(available,raw),
              "unexecuted_research_signals":signals,
-             "currency_strength_note":"CHF unavailable in monitored data; do not fabricate 8-currency ranking",
+             "currency_strength_note":"Use synchronized GMO JPY crosses incl NZD/JPY and CHF/JPY; mark missing if unavailable.",
              "events_and_news":events,
              "news_alert_policy":"Never mark old/undated headlines as fresh/S-grade. RSS alone not enough for S-grade.",
              "triggers_for_future_instruction":["分析して","FX分析","分析","ふ"],
