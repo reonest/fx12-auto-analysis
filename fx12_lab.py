@@ -354,6 +354,7 @@ def main():
                 "actual_pnl_jpy":None, "outcome":"UNVERIFIED",
                 "cannot_infer_fill_sequence_from_ohlc":True})
     signals_path=Path(args.output).parent/"fx12_unexecuted_signals.json"
+    signals_path.parent.mkdir(parents=True,exist_ok=True)
     signals_path.write_text(json.dumps({"generated_utc":iso(now),
         "signals":signals,"not_real_trades":True,
         "history_note":"Per-run snapshots only; longitudinal evaluation requires retained runs."
