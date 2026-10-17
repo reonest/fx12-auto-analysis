@@ -266,6 +266,7 @@ def eight_currency_strength(gmo_raw, now):
     shared = None
     for df in cross.values():
         shared = df.index if shared is None else shared.intersection(df.index)
+    shared = shared[shared + pd.Timedelta(hours=1) <= pd.Timestamp(now)]
     if len(shared) < 25:
         return {"status": "NOT_TIME_ALIGNED", "currencies": list(currencies)}
     end = shared[-1]
