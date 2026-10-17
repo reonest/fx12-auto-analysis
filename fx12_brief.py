@@ -37,6 +37,11 @@ def make_brief(data):
             f"- {row['pair']} | 方向: {row['direction']} | 環境: {row['environment']} "
             f"| データ: {row['source']} | 試験点: {row['score_experimental']}"
         )
+    strength = data.get("eight_currency_strength", {})
+    lines.extend(["", "## 主要8通貨の強弱（同一時刻のGMO円ペアから試験計算）",
+                  f"判定: {strength.get('status','未確認')}, 基準時刻: {strength.get('to_close_jst','未確認')}"])
+    for entry in strength.get("ranked", []):
+        lines.append(f"- {entry['currency']}: 基準バスケット相対変化 {entry['relative_to_equal_weight_basket_pct']:+.4f}%")
     lines.extend(["", "## 正式12通貨の取得・確定足時刻（JST）"])
     for row in data.get("pairs", []):
         tf = row.get("frames", {})
