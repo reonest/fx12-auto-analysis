@@ -16,7 +16,7 @@ from datetime import datetime, timedelta, timezone, date
 from email.utils import parsedate_to_datetime
 from zoneinfo import ZoneInfo
 from html import unescape
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 
 import requests
 from icalendar import Calendar
@@ -85,9 +85,20 @@ def clean_text(raw, limit=190):
     return re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", str(raw or "")))).strip()[:limit]
 
 
-def clean_url(link):
+def clean_url(link, source=None):
     url = str(link or "").strip()
-    return url if url.startswith("https://") and urlparse(url).hostname else None
+    if source and url:
+        url = urljoin(source, url)
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        return None
+    if source:
+        origin = urlparse(source).hostname
+        if not origin or (parsed.hostname != origin and not parsed.hostname.endswith("." + origin)):
+            return None
+    if parsed.scheme == "http":
+        url = "https://" + url[len("http://"):]
+    return url
 
 
 def event_from(source, name, stamp, url):
@@ -178,7 +189,7 @@ def parse_rss(raw, source, now):
                 except (ValueError, AttributeError):
                     pass
         stamp = utc_dt(stamp)
-        if not title or not clean_url(link):
+        if not title or not clean_url(link, source['url']):
             continue
         age = round((now - stamp).total_seconds() / 60) if stamp else None
         if age is None:
@@ -193,7 +204,7 @@ def parse_rss(raw, source, now):
         # and independent verification are not available from RSS alone.
         out.append({"id": hashlib.sha256((source["id"] + "|" + link).encode()).hexdigest()[:20],
                     "source": source["id"], "currencies": source["ccy"],
-                    "title": title, "url": clean_url(link),
+                    "title": title, "url": clean_url(link, source["url"]),
                     "published_utc": iso(stamp), "published_jst": jst(stamp),
                     "publication_age_minutes": age,
                     "first_seen_utc": None,
@@ -225,7 +236,8 @@ def collect_events(session, now=None):
             else:
                 got = parse_rss(r.content, source, now)
                 news.extend(got)
-            state.update({"status": "OK", "records": len(got)})
+            state.update({"status": "OK" if got else "EMPTY_OR_NO_MATCHING_RECORDS",
+                          "records": len(got)})
         except (requests.RequestException, ValueError, ET.ParseError, TypeError) as exc:
             state["error"] = type(exc).__name__ + ": " + str(exc)[:100]
         status.append(state)
