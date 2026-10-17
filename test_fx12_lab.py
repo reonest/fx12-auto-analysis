@@ -6,7 +6,8 @@ import numpy as np
 import pandas as pd
 
 from fx12_lab import (EXTRA, FRAMES, PAIRS, resample_complete, frame_quality,
-                      features, synthetic_checks, scenarios, summarize, eight_currency_strength)
+                      features, synthetic_checks, scenarios, summarize, eight_currency_strength,
+                      drop_session_truncated_higher_bars)
 from fx12_events import parse_rss, parse_bea_json, parse_bls_ics, SOURCES
 
 UTC = timezone.utc
@@ -116,6 +117,15 @@ class PriceTests(unittest.TestCase):
         self.assertFalse(synthetic["high_low_atr_adx_calculation_allowed"])
         self.assertEqual(synthetic["5m"]["status"], "OK")
         self.assertEqual(synthetic["10m"]["status"], "MISSING_GMO_INPUT")
+
+    def test_weekend_truncated_four_hour_bar_removed(self):
+        five_idx = pd.date_range(start="2026-10-16T20:30:00Z", periods=6, freq="5min")
+        five = pd.DataFrame({"close":[100]*6}, index=five_idx)
+        four_idx = pd.to_datetime(["2026-10-16T17:00:00Z","2026-10-16T21:00:00Z"])
+        higher = pd.DataFrame({"close":[100,101]}, index=four_idx)
+        filtered, dropped = drop_session_truncated_higher_bars(higher, five)
+        self.assertEqual(dropped, 1)
+        self.assertEqual(len(filtered),1)
 
     def test_eight_currency_strength_requires_aligned_gmo_jpy_data(self):
         now = datetime(2026, 10, 17, 2, 20, tzinfo=UTC)
