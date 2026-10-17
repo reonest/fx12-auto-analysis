@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 from fx12_lab import (EXTRA, FRAMES, PAIRS, resample_complete, frame_quality,
-                      features, synthetic_checks, scenarios, summarize)
+                      features, synthetic_checks, scenarios, summarize, eight_currency_strength)
 from fx12_events import parse_rss, parse_bea_json, parse_bls_ics, SOURCES
 
 UTC = timezone.utc
@@ -116,6 +116,24 @@ class PriceTests(unittest.TestCase):
         self.assertFalse(synthetic["high_low_atr_adx_calculation_allowed"])
         self.assertEqual(synthetic["5m"]["status"], "OK")
         self.assertEqual(synthetic["10m"]["status"], "MISSING_GMO_INPUT")
+
+    def test_eight_currency_strength_requires_aligned_gmo_jpy_data(self):
+        now = datetime(2026, 10, 17, 2, 20, tzinfo=UTC)
+        idx = pd.date_range(start="2026-10-14T01:00:00Z", periods=75, freq="1h")
+        series = {}
+        for i, name in enumerate(("USD", "EUR", "GBP", "AUD", "NZD", "CAD", "CHF")):
+            prices = np.linspace(100 + i, 101 + i, len(idx))
+            series[name + "/JPY"] = {"1h": pd.DataFrame({
+                "open": prices,"high": prices+1,"low": prices-1,
+                "close": prices}, index=idx)}
+        result = eight_currency_strength(series, now)
+        self.assertEqual(result["currency_count"],8)
+        self.assertEqual(len(result["ranked"]),8)
+        self.assertEqual(result["reference_hours"],24)
+        self.assertIn("CHF", [x["currency"] for x in result["ranked"]])
+        del series["CHF/JPY"]
+        self.assertEqual(eight_currency_strength(series, now)["status"],
+                         "INSUFFICIENT_GMO_JPY_CROSSES")
 
     def test_fixed_twelve_and_additional_research(self):
         self.assertEqual(len(PAIRS), 12)
