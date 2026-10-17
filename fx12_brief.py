@@ -24,7 +24,9 @@ def as_jst(value):
 def make_brief(data):
     lines = [
         "# FX12試験分析コンテキスト（発注指示ではない）",
-        f"データ生成: {data.get('generated_jst', '不明')} / GMO FX取引状態: {data.get('gmo_ticker_status', '不明')}",
+        f"データ生成: {data.get('generated_jst', '不明')} / GMO API状態: {data.get('gmo_ticker_status', '不明')}",
+        f"市場時間帯参考: {data.get('market_time_analysis', {}).get('phase_reference', '未取得')}",
+        "**休場中のスコアは過去の確定足による研究結果。現在の新規売買推奨ではありません。**",
         "**正式12通貨 + AUD/NZD比較研究、CAD/JPYは合成用補助。**",
         "**注文前にSBI FXのBid/Ask・実勢スプレッド・損切り・数量・注文条件のスクショ確認が必要。**",
         "",
@@ -49,6 +51,11 @@ def make_brief(data):
             f"3方式={row.get('three_methods')}"
         )
     econ = data.get("events_and_news", {})
+    lines.extend(["", "## 未執行・研究用シグナル（実注文ではない）"])
+    for signal in data.get("unexecuted_research_signals", []):
+        lines.append(f"- {signal['pair']} | {signal['method']} | {signal['direction_reference']} "
+                     f"| 10m確定 {as_jst(signal.get('last_10m_close_utc'))} "
+                     f"| 結果未検証・約定なし")
     lines.extend(["", "## 公式予定指標（日本時間）",
                   "**公開カレンダーは一部のみ。0件でも「重要指標なし」と断定しない。**"])
     for event in econ.get("events", [])[:30]:
