@@ -44,6 +44,15 @@ class NewsTimeTests(unittest.TestCase):
         self.assertEqual(item["s_grade"], "NOT_EVALUATED")
         self.assertEqual(item["publication_age_minutes"], 5)
 
+    def test_rss_relative_link_keeps_original_publication_time(self):
+        rss = b"""<rss><channel><item><title>Policy update</title>
+        <link>/newsevents/pressreleases/monetary20261015a.htm</link>
+        <pubDate>Thu, 15 Oct 2026 02:15:00 GMT</pubDate></item></channel></rss>"""
+        item = parse_rss(rss, self.feed, self.now)[0]
+        self.assertEqual(item["url"], "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261015a.htm")
+        self.assertFalse(item["breaking_eligible"])
+        self.assertEqual(item["freshness"], "ARCHIVE_NOT_BREAKING")
+
     def test_bea_dst_correct(self):
         src = {"id": "bea", "ccy": ["USD"], "url": "https://apps.bea.gov/API/signup/release_dates.json"}
         data = {"Gross Domestic Product": {"release_dates": ["2026-10-20T12:30:00+00:00"]}}
