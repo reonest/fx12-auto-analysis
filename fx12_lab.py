@@ -94,6 +94,21 @@ def fetch_gmo(session, pair, interval, now):
     return parse_gmo_candles(candles, mins, now), errors
 
 
+def drop_session_truncated_higher_bars(higher, five):
+    """Remove longer-frame bars nominally ending after the last traded 5m close.
+
+    During weekend closure a broker can publish a nominally closed 4h bar
+    containing only an hour of actual session trading; exclude such tail bars.
+    This is a conservative quality filter, not reconstruction of tick coverage.
+    """
+    if higher.empty or five.empty:
+        return higher, 0
+    session_end = five.index[-1] + pd.Timedelta(minutes=5)
+    allowed = higher.index + pd.Timedelta(minutes=240) <= session_end
+    dropped = int((~allowed).sum())
+    return higher.loc[allowed], dropped
+
+
 def resample_complete(df, minutes, now):
     if len(df) < 2:
         return df.iloc[:0].copy()
@@ -325,6 +340,10 @@ def main():
             for frame in FRAMES:
                 gmo[frame], err = fetch_gmo(session, pair, frame, now)
                 if err: errors += [frame + ":" + ",".join(err[:2])]
+            if not open_now and "5m" in gmo and "4h" in gmo:
+                gmo["4h"], dropped = drop_session_truncated_higher_bars(gmo["4h"], gmo["5m"])
+                if dropped:
+                    errors.append("SESSION_TRUNCATED_4H_REMOVED:" + str(dropped))
         good = listed and all(frame_quality(gmo[x],x,now,open_now) in ("OK","MARKET_CLOSED") for x in FRAMES)
         source, data = "GMO", gmo
         if not good:
