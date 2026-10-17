@@ -23,7 +23,7 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Validate selection logic offline
         run: python -m unittest -v test_dual_source_trial.py
-      - name: Probe GMO first and Yahoo fallback on 3 FX pairs
-        run: python dual_source_trial.py --max-pairs 3
+      - name: Probe GMO first and Yahoo fallback on all 12 FX pairs
+        run: python dual_source_trial.py --max-pairs 12
       - name: Reminder
         run: echo "Diagnostic only. No order endpoints, secrets, docs updates or price republication."
