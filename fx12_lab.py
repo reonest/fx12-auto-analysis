@@ -38,6 +38,33 @@ def jst(d):
     return d.astimezone(JST).strftime("%Y-%m-%d %H:%M JST")
 
 
+def market_clock(now):
+    local = now.astimezone(JST)
+    hour = local.hour
+    if local.weekday() == 6 or (local.weekday() == 5 and hour >= 8) or (local.weekday() == 0 and hour < 7):
+        phase = "週末・流動性低下／休場に注意"
+    elif 8 <= hour < 10:
+        phase = "東京初動"
+    elif 10 <= hour < 15:
+        phase = "東京日中"
+    elif 15 <= hour < 19:
+        phase = "欧州移行・ロンドン初動候補"
+    elif 19 <= hour < 21:
+        phase = "欧州中盤"
+    elif 21 <= hour < 24:
+        phase = "NY市場・米指標警戒"
+    elif hour < 2:
+        phase = "ロンドン終盤・欧米重複後半"
+    else:
+        phase = "流動性低下時間帯"
+    london = now.astimezone(ZoneInfo("Europe/London"))
+    newyork = now.astimezone(ZoneInfo("America/New_York"))
+    return {"jst":jst(now), "phase_reference":phase,
+            "london_local":london.strftime("%Y-%m-%d %H:%M %Z"),
+            "new_york_local":newyork.strftime("%Y-%m-%d %H:%M %Z"),
+            "note":"時間帯だけで売買方向・市場の営業状況は断定しない"}
+
+
 def number(x, digits=6):
     return round(float(x), digits) if pd.notna(x) and math.isfinite(float(x)) else None
 
@@ -287,15 +314,32 @@ def main():
         ccys=pair.split("/")
         result["upcoming_events"]=[e for e in events["events"] if any(c in e.get("currencies",[]) for c in ccys)][:10]
         result["news"]=[n for n in events["news"] if any(c in n.get("currencies",[]) for c in ccys)][:10]
+        event_near = []
+        for e in result["upcoming_events"]:
+            if e.get("importance_hint") != "S":
+                continue
+            try:
+                moment=datetime.fromisoformat(e["scheduled_utc"])
+                if 0 <= (moment-now).total_seconds() <= 7200:
+                    event_near.append(e["name"])
+            except (TypeError,ValueError,KeyError):
+                pass
+        result["event_risk"]={
+            "s_events_within_2h":event_near,
+            "calendar_complete":False,
+            "must_recheck_official_and_major_calendar_before_order":True}
         result["requires_SBI_screenshot_before_order"]=True
         rows.append(result)
     ranking=sorted((x for x in rows if x["role"]=="FORMAL_12"),
                    key=lambda x:(-x["three_methods"]["score"],x["pair"]))
-    context={"generated_utc":iso(now), "generated_jst":jst(now), "status":"RESEARCH_NOT_ORDER",
+    context={"generated_utc":iso(now), "generated_jst":jst(now),
+             "market_time_analysis":market_clock(now),
+             "status":"RESEARCH_NOT_ORDER",
              "data_plan":"GMO_COIN_FX_FIRST_YAHOO_FALLBACK", "gmo_ticker_status":ticker_status,
              "formal_pairs":12, "research_pair":EXTRA, "extra_helper_pair":HELPER,
              "pairs":rows,"top_candidates":[{"pair":r["pair"],
                "score_experimental":r["three_methods"]["score"],
+               "market_status":r["market_status"], "not_an_order_signal":True,
                "direction":r["three_methods"]["overall"],
                "environment":r["three_methods"]["environment"],
                "source":r["source"]} for r in ranking if r["three_methods"]["score"]>0][:3],
