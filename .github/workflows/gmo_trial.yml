@@ -1,0 +1,44 @@
+name: FX12 laboratory (GMO-first, news, no publishing)
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+    paths:
+      - 'dual_source_trial.py'
+      - 'gmo_fx_probe.py'
+      - 'fx12_lab.py'
+      - 'fx12_events.py'
+      - 'fx12_brief.py'
+      - 'test_dual_source_trial.py'
+      - 'test_fx12_lab.py'
+      - '.github/workflows/gmo_trial.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  laboratory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install trial dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install 'icalendar>=6,<8'
+      - name: Validate historical and time-sensitive data logic
+        run: python -m unittest -v test_dual_source_trial.py test_fx12_lab.py
+      - name: Full 12-pair trial plus AUD/NZD and official releases
+        run: python fx12_lab.py --all-pairs --with-news
+      - name: Make GPT-friendly brief
+        run: python fx12_brief.py trial_output/fx12_ai_context.json --out trial_output/fx12_brief.md
+      - name: Upload non-publication trial research artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: fx12-lab-${{ github.run_id }}
+          path: trial_output/
+          retention-days: 7
+      - name: Research only
+        run: echo "No order API, no write permissions, no push, no public Pages publication."
