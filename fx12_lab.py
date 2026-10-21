@@ -20,10 +20,10 @@ from fx12_events import collect_events
 UTC = timezone.utc
 JST = ZoneInfo("Asia/Tokyo")
 EXTRA = "AUD/NZD"
-HELPERS = ("CAD/JPY", "NZD/JPY", "CHF/JPY")  # internal currency-strength inputs, not trading targets
+HELPERS = ("CAD/JPY",)  # internal helper only; NZD/JPY and CHF/JPY are formal targets
 SYNTH = {"USD/CAD": ("USD/JPY", "CAD/JPY"),
          "EUR/AUD": ("EUR/JPY", "AUD/JPY"),
-         "GBP/AUD": ("GBP/JPY", "AUD/JPY")}
+         "EUR/NZD": ("EUR/JPY", "NZD/JPY")}
 FRAMES = {"5m": ("5min", 5, 90), "10m": ("10min", 10, 90),
           "15m": ("15min", 15, 90), "1h": ("1hour", 60, 90),
           "4h": ("4hour", 240, 80)}
@@ -316,11 +316,11 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", default="trial_output/fx12_ai_context.json")
     parser.add_argument("--with-news", action="store_true")
-    parser.add_argument("--all-pairs", action="store_true", help="13 monitored/research pairs and CAD/JPY helper")
+    parser.add_argument("--all-pairs", action="store_true", help="Formal 12 + research AUD/NZD + helper CAD/JPY")
     args = parser.parse_args()
     now = datetime.now(UTC)
     pairs = PAIRS + [EXTRA]
-    available = pairs + list(HELPERS) if args.all_pairs else ["USD/JPY", "EUR/USD", "MXN/JPY", EXTRA, "CAD/JPY"]
+    available = list(dict.fromkeys(pairs + list(HELPERS))) if args.all_pairs else ["USD/JPY", "EUR/USD", "EUR/NZD", EXTRA, "CAD/JPY"]
     session = requests.Session()
     session.headers.update({"Accept": "application/json", "User-Agent": "fx12-lab/0.1"})
     try:
@@ -427,7 +427,8 @@ def main():
              "market_time_analysis":market_clock(now),
              "status":"RESEARCH_NOT_ORDER",
              "data_plan":"GMO_COIN_FX_FIRST_YAHOO_FALLBACK", "gmo_ticker_status":ticker_status,
-             "formal_pairs":12, "research_pair":EXTRA, "extra_helper_pairs":list(HELPERS),
+             "formal_pairs":12, "formal_pair_names":list(PAIRS), "pair_set_version":"2026-10-21",
+             "research_pair":EXTRA, "extra_helper_pairs":list(HELPERS),
              "eight_currency_strength":eight_currency_strength(gmo_raw,now),
              "pairs":rows,"top_candidates":[{"pair":r["pair"],
                "score_experimental":r["three_methods"]["score"],
