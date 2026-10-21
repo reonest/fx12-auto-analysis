@@ -27,7 +27,7 @@ def make_brief(data):
         f"データ生成: {data.get('generated_jst', '不明')} / GMO API状態: {data.get('gmo_ticker_status', '不明')}",
         f"市場時間帯参考: {data.get('market_time_analysis', {}).get('phase_reference', '未取得')}",
         "**休場中のスコアは過去の確定足による研究結果。現在の新規売買推奨ではありません。**",
-        "**正式12通貨 + AUD/NZD比較研究、CAD/JPYは合成用補助。**",
+        "**正式12通貨（2026-10-21版） + AUD/NZD比較研究。CHF/JPY・NZD/JPYは正式監視、CAD/JPYのみ補助。**",
         "**注文前にSBI FXのBid/Ask・実勢スプレッド・損切り・数量・注文条件のスクショ確認が必要。**",
         "",
         "## 上位候補（スコアは検証中、勝率ではない）",
