@@ -3,15 +3,17 @@
 本ファイルは試験運用の接続仕様です。本番 main、公開ダッシュボード、FX正式ルールは未変更です。
 
 ## 分析対象
-- 正式12通貨：USD/JPY、EUR/JPY、GBP/JPY、AUD/JPY、EUR/USD、GBP/USD、AUD/USD、USD/CAD、EUR/GBP、EUR/AUD、GBP/AUD、MXN/JPY
+- 正式12通貨（2026-10-21改訂）：チャート2＝USD/JPY、EUR/JPY、GBP/JPY、AUD/JPY／チャート3＝EUR/USD、GBP/USD、AUD/USD、USD/CAD／チャート4＝CHF/JPY、NZD/JPY、EUR/AUD、EUR/NZD。
 - AUD/NZD：13番目の比較研究対象。正式12通貨の候補数や資金管理は変えない。
-- CAD/JPY：USD/CAD合成計算用の補助データ。取引候補には含めない。
+- CHF/JPY・NZD/JPY：以前の補助データから正式監視対象へ移行し、強弱計算にも同じ取得結果を再利用する。
+- CAD/JPY：USD/CAD合成・主要8通貨強弱用の補助データで、取引候補には含めない。
+- 旧EUR/GBP、GBP/AUD、MXN/JPYは正式監視から除外。
 
 ## 価格・指標
 - GMOコイン外国為替FXの認証不要Public APIのBid OHLCを第一候補とする（GMOクリック証券のAPIではない）。
 - GMOで対象外、欠損、時間足不足、取引中の過度な遅延などがある場合はYahoo Financeを代替取得先とする。成り立たなければ取得不能として表示する。
 - 5/10/15分、1時間、4時間足とMA5/25/75、MACD(12,26,9)、RSI14、ATR14、DMI/ADX14、BB(20,2)、過去20本高安を計算。
-- USD/CAD=USD/JPY÷CAD/JPY、EUR/AUD=EUR/JPY÷AUD/JPY、GBP/AUD=GBP/JPY÷AUD/JPYを同時刻のGMO終値だけで研究比較。合成OHLC高安・ATR・ADX・ストップは作らない。
+- USD/CAD=USD/JPY÷CAD/JPY、EUR/AUD=EUR/JPY÷AUD/JPY、EUR/NZD=EUR/JPY÷NZD/JPYを同時刻のGMO終値だけで研究比較。合成OHLC高安・ATR・ADX・ストップは作らない。
 - 3方式（通常総合、別分析A、別分析B）は仮説・条件付き候補。勝率や期待値の実証ではない。
 - AUD/NZDの研究結果は正式12通貨の上位候補には含めない。
 - YahooとGMOの異なるBid/Ask/提示時間の値を同一のレートとみなさない。
