@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 import numpy as np
 import pandas as pd
 
-from fx12_lab import (EXTRA, FRAMES, PAIRS, resample_complete, frame_quality,
+from fx12_lab import (EXTRA, HELPERS, FRAMES, PAIRS, resample_complete, frame_quality,
                       features, synthetic_checks, scenarios, summarize, eight_currency_strength,
                       drop_session_truncated_higher_bars)
 from fx12_events import parse_rss, parse_bea_json, parse_bls_ics, SOURCES
@@ -111,9 +111,9 @@ class PriceTests(unittest.TestCase):
         feats = features(data)
         self.assertIsNotNone(feats["adx14"].iloc[-1])
         self.assertIsNotNone(feats["bb_upper"].iloc[-1])
-        synthetic = synthetic_checks("GBP/AUD", {
-            "GBP/JPY": {"5m": data},
-            "AUD/JPY": {"5m": data}})
+        synthetic = synthetic_checks("EUR/NZD", {
+            "EUR/JPY": {"5m": data},
+            "NZD/JPY": {"5m": data}})
         self.assertFalse(synthetic["high_low_atr_adx_calculation_allowed"])
         self.assertEqual(synthetic["5m"]["status"], "OK")
         self.assertEqual(synthetic["10m"]["status"], "MISSING_GMO_INPUT")
@@ -146,9 +146,15 @@ class PriceTests(unittest.TestCase):
                          "INSUFFICIENT_GMO_JPY_CROSSES")
 
     def test_fixed_twelve_and_additional_research(self):
-        self.assertEqual(len(PAIRS), 12)
+        self.assertEqual(PAIRS, [
+            "USD/JPY", "EUR/JPY", "GBP/JPY", "AUD/JPY",
+            "EUR/USD", "GBP/USD", "AUD/USD", "USD/CAD",
+            "CHF/JPY", "NZD/JPY", "EUR/AUD", "EUR/NZD",
+        ])
         self.assertNotIn(EXTRA, PAIRS)
         self.assertEqual(EXTRA, "AUD/NZD")
+        self.assertEqual(HELPERS, ("CAD/JPY",))
+        self.assertFalse(set(PAIRS) & set(HELPERS))
 
 
 if __name__ == "__main__":
