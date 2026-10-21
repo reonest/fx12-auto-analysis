@@ -3,7 +3,7 @@
 ## 概要
 GitHub Actionsで約15分ごとにYahoo Financeの非公式チャートAPIへアクセスし、12通貨の5分足ATR14/RSI14/MACDと1時間足MA5/25/75を計算。GitHub Pagesの公開Web画面に結果を保存します。Macは起動不要です。
 
-**重要：未デプロイ・Yahooへのライブアクセス未検証。** 更新は厳密な15分保証ではありません。Yahooのアクセス制限・欠損・遅延やGitHub Actionsの混雑・停止で更新できない場合があります。公開リポジトリのGitHub Pagesでは分析結果も公開されます。認証情報、口座情報、注文情報は絶対にアップロードしないでください。
+**重要：Yahoo非公式データで稼働中、利用可能性や更新頻度は保証されません。** 更新は厳密な15分保証ではありません。Yahooのアクセス制限・欠損・遅延やGitHub Actionsの混雑・停止で更新できない場合があります。公開リポジトリのGitHub Pagesでは分析結果も公開されます。認証情報、口座情報、注文情報は絶対にアップロードしないでください。
 
 ## 初回設定（Macのブラウザのみでも可能）
 1. GitHubアカウントを作成し、**Public** リポジトリ `fx12-dashboard` を作成。
@@ -18,7 +18,7 @@ GitHub Actionsで約15分ごとにYahoo Financeの非公式チャートAPIへア
 公開リポジトリのGitHub Actions・GitHub Pages無料枠を想定していますが、プラン・利用規約・無料枠の最新条件はGitHubで確認してください。GitHub Pagesは公開表示なので、取引情報は載せないでください。
 
 ## 対象通貨
-USD/JPY、EUR/JPY、GBP/JPY、AUD/JPY、EUR/USD、GBP/USD、AUD/USD、USD/CAD、EUR/GBP、EUR/AUD、GBP/AUD、MXN/JPY。AUD/NZDは対象外。
+2026-10-21改訂：チャート2＝USD/JPY、EUR/JPY、GBP/JPY、AUD/JPY。チャート3＝EUR/USD、GBP/USD、AUD/USD、USD/CAD。チャート4＝CHF/JPY、NZD/JPY、EUR/AUD、EUR/NZD。旧EUR/GBP、GBP/AUD、MXN/JPYは正式監視対象から除外。AUD/NZDはGMO試験版で比較研究専用（本番Yahooダッシュボードの集計外）。
 
 ## 分析範囲と制約
 一次選考用の簡易スコアのみ。15分足の価格構造・ADX・経済指標・相関・SBI実勢Bid/Ask・スプレッド・IFD-OCO期限は未実装。10分足は不要という運用の正式変更はまだしていません。FXプロジェクトの正式ルールと照合するまで発注判断に使わないでください。
