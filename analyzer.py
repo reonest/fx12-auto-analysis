@@ -11,7 +11,9 @@ import numpy as np
 import pandas as pd
 import requests
 
-PAIRS = ["USD/JPY", "EUR/JPY", "GBP/JPY", "AUD/JPY", "EUR/USD", "GBP/USD", "AUD/USD", "USD/CAD", "EUR/GBP", "EUR/AUD", "GBP/AUD", "MXN/JPY"]
+# Formal twelve, effective 2026-10-21. Keep screen order aligned with SBI 4-up charts.
+FORMAL_PAIRSET_VERSION = "2026-10-21"
+PAIRS = ["USD/JPY","EUR/JPY","GBP/JPY","AUD/JPY","EUR/USD","GBP/USD","AUD/USD","USD/CAD","CHF/JPY","NZD/JPY","EUR/AUD","EUR/NZD"]
 SYMBOLS = {pair: pair.replace('/', '') + '=X' for pair in PAIRS}
 
 
@@ -123,7 +125,7 @@ def main():
     df = df.sort_values('rank_score', ascending=False, na_position='last').drop(columns='rank_score')
     df.to_csv(output/'fx12_screening.csv', index=False, encoding='utf-8-sig')
     with (output/'fx12_screening.json').open('w', encoding='utf-8') as fh:
-        json.dump({'generated_utc': datetime.now(timezone.utc).isoformat(), 'data_source': 'Yahoo Finance unofficial chart endpoint', 'results': results}, fh, ensure_ascii=False, indent=2)
+        json.dump({'generated_utc': datetime.now(timezone.utc).isoformat(), 'data_source': 'Yahoo Finance unofficial chart endpoint', 'pair_set_version': FORMAL_PAIRSET_VERSION, 'formal_pairs': PAIRS, 'results': results}, fh, ensure_ascii=False, indent=2)
     print(f'\nSaved: {output / "fx12_screening.csv"}')
     print(f'Success: {sum(x["status"] == "OK" for x in results)}/12')
     print('Research only. No live broker spread, no order execution.')
