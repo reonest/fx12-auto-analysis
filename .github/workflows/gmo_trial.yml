@@ -3,6 +3,7 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
     paths:
+      - 'analyzer.py'
       - 'dual_source_trial.py'
       - 'gmo_fx_probe.py'
       - 'fx12_lab.py'
