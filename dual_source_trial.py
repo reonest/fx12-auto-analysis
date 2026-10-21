@@ -145,9 +145,9 @@ def main():
     args = parser.parse_args()
     now = datetime.now(timezone.utc)
     selected = PAIRS[:max(1, min(12, args.max_pairs))]
-    # Include MXN/JPY in the initial three-pair pilot.
+    # Include newly formal EUR/NZD for Yahoo/GMO fallback checks in the three-pair pilot.
     if args.max_pairs == 3:
-        selected = ["USD/JPY", "EUR/USD", "MXN/JPY"]
+        selected = ["USD/JPY", "EUR/USD", "EUR/NZD"]
     with requests.Session() as session:
         session.headers.update({"Accept": "application/json",
                                 "User-Agent": "fx12-research/1.0"})
