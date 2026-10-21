@@ -25,6 +25,19 @@ class ScreeningTests(unittest.TestCase):
             v1 = np.full(100, 1.5)
         return make(times5,v5), make(times1,v1)
 
+    def test_formal_twelve_set_and_chart_order(self):
+        expected = [
+            "USD/JPY", "EUR/JPY", "GBP/JPY", "AUD/JPY",
+            "EUR/USD", "GBP/USD", "AUD/USD", "USD/CAD",
+            "CHF/JPY", "NZD/JPY", "EUR/AUD", "EUR/NZD",
+        ]
+        self.assertEqual(analyzer.FORMAL_PAIRSET_VERSION, "2026-10-21")
+        self.assertEqual(analyzer.PAIRS, expected)
+        self.assertEqual(len(analyzer.SYMBOLS), 12)
+        self.assertEqual(analyzer.SYMBOLS["EUR/NZD"], "EURNZD=X")
+        self.assertFalse(set(["EUR/GBP", "GBP/AUD", "MXN/JPY"]) & set(analyzer.PAIRS))
+        self.assertNotIn("AUD/NZD", analyzer.PAIRS)
+
     def test_up_breakout(self):
         f,h=self.frames("up")
         with patch("analyzer.pd.Timestamp.now", return_value=pd.Timestamp("2026-10-20",tz="UTC")):
