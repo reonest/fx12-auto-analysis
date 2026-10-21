@@ -1,6 +1,6 @@
 # FX12 LAB | GMO優先 + Yahoo補助 + AUD/NZD研究 + ニュース時刻検証
 
-本ファイルは試験運用の接続仕様です。本番 main、公開ダッシュボード、FX正式ルールは未変更です。
+本ファイルはGMO優先・Yahoo補助の試験運用仕様です。本番 main の正式12ペア定義は2026-10-21に更新済みですが、GMO試験版PR #2は未マージ・非公開Artifact専用です。ChatGPTプロジェクト指示と正式ルールTXTは別途更新が必要です。
 
 ## 分析対象
 - 正式12通貨（2026-10-21改訂）：チャート2＝USD/JPY、EUR/JPY、GBP/JPY、AUD/JPY／チャート3＝EUR/USD、GBP/USD、AUD/USD、USD/CAD／チャート4＝CHF/JPY、NZD/JPY、EUR/AUD、EUR/NZD。
