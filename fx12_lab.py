@@ -346,7 +346,12 @@ def main():
                     errors.append("SESSION_TRUNCATED_4H_REMOVED:" + str(dropped))
         good = listed and all(frame_quality(gmo[x],x,now,open_now) in ("OK","MARKET_CLOSED") for x in FRAMES)
         source, data = "GMO", gmo
-        if not good:
+        if not good and pair == "USD/CAD":
+            # Defer to synchronized GMO USD/JPY / CAD/JPY close-only synthetic.
+            # CAD/JPY helper is fetched after the formal pairs.
+            source, data = "PENDING_SYNTH", {}
+            errors.append("TRY_GMO_SYNC_CLOSE_FIRST")
+        elif not good:
             source = "YAHOO"
             errors.append("GMO_INSUFFICIENT_OR_NOT_LISTED")
             try:
@@ -360,6 +365,51 @@ def main():
                       "market": ticker.get(symbol, {}).get("status", "UNKNOWN"),
                       "notes": errors}
         print("FETCH",pair,source,"pairs",[(x,len(v)) for x,v in data.items()])
+    # Screening-only USD/CAD from synchronized cross-Yen closes. Never synthesize
+    # high/low, ATR, ADX, actual execution prices, or stop levels.
+    synthetic_usdcad = None
+    if sources.get("USD/CAD") == "PENDING_SYNTH":
+        a = gmo_raw.get("USD/JPY", {}).get("1h")
+        b = gmo_raw.get("CAD/JPY", {}).get("1h")
+        if a is not None and b is not None:
+            aligned = pd.concat([a.close.rename("usd"), b.close.rename("cad")],
+                                axis=1, join="inner").dropna()
+            aligned = aligned[aligned.cad > 0]
+            if len(aligned) >= 90:
+                ratio = aligned.usd / aligned.cad
+                ma5, ma25, ma75 = (ratio.tail(n).mean() for n in (5,25,75))
+                ema12 = ratio.ewm(span=12,adjust=False,min_periods=26).mean()
+                ema26 = ratio.ewm(span=26,adjust=False,min_periods=26).mean()
+                macd = ema12-ema26
+                hist = macd-macd.ewm(span=9,adjust=False,min_periods=9).mean()
+                latest = float(ratio.iloc[-1])
+                direction = ("買い方向" if latest > ma25 > ma75 else
+                             "売り方向" if latest < ma25 < ma75 else "中立")
+                aligned_momentum = (direction=="買い方向" and hist.iloc[-1]>0) or (direction=="売り方向" and hist.iloc[-1]<0)
+                synthetic_usdcad = {
+                    "source":"GMO_SYNTH_CLOSE_ONLY", "basis":"USD/JPY ÷ CAD/JPY",
+                    "last_1h_candle_open_utc":iso(ratio.index[-1].to_pydatetime()),
+                    "last_close_ratio":number(latest), "ma5_1h":number(ma5),
+                    "ma25_1h":number(ma25), "ma75_1h":number(ma75),
+                    "macd_hist_1h":number(hist.iloc[-1],7),
+                    "time_aligned_bars":len(aligned), "no_true_high_low_atr_adx":True,
+                    "screening_direction":direction,
+                    "screening_score":(2 if direction!="中立" else 0)+(1 if aligned_momentum else 0)
+                }
+        if synthetic_usdcad is not None:
+            sources["USD/CAD"]="GMO_SYNTH_CLOSE_ONLY"
+            info["USD/CAD"]["source"]="GMO_SYNTH_CLOSE_ONLY"
+            info["USD/CAD"]["notes"].append("SCREENING_ONLY_NOT_OHLC")
+        else:
+            try:
+                raw["USD/CAD"]=yahoo_frames(session,"USD/CAD",now)
+                sources["USD/CAD"]="YAHOO"
+                info["USD/CAD"]["source"]="YAHOO"
+                info["USD/CAD"]["notes"].append("SYNTH_MISSING_YAHOO_BACKUP")
+            except (requests.RequestException,ValueError,TypeError,KeyError,IndexError) as exc:
+                sources["USD/CAD"]="UNAVAILABLE"
+                info["USD/CAD"]["source"]="UNAVAILABLE"
+                info["USD/CAD"]["notes"].append("YAHOO_"+type(exc).__name__)
     events = collect_events(session, now) if args.with_news else {
         "generated_utc": iso(now), "events": [], "news": [], "sources": [],
         "calendar_coverage": "NOT_FETCHED", "critical_note": "Must verify at analysis time"}
@@ -374,6 +424,15 @@ def main():
             result["frames"][frame] = (summarize(data[frame],frame,meta["source"],now,meta["market"]=="OPEN")
                                       if frame in data else {"status":"NOT_AVAILABLE"})
         result["three_methods"]=scenarios(result)
+        if pair == "USD/CAD" and synthetic_usdcad is not None:
+            result["synthetic_screening"]=synthetic_usdcad
+            result["three_methods"]={
+                "environment":"合成終値・トレンド方向のみ",
+                "overall":synthetic_usdcad["screening_direction"],
+                "trend_breakout":"判定保留", "range_reversal":"判定保留",
+                "score":synthetic_usdcad["screening_score"],
+                "limited_close_only_screening":True
+            }
         result["synthetic_close_check"]=synthetic_checks(pair,gmo_raw)
         ccys=pair.split("/")
         result["upcoming_events"]=[e for e in events["events"] if any(c in e.get("currencies",[]) for c in ccys)][:10]
