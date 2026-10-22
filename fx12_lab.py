@@ -420,8 +420,13 @@ def main():
         result = {"pair": pair, "role":"RESEARCH_ONLY" if pair==EXTRA else "FORMAL_12",
                   "source":meta["source"], "market_status":meta["market"],
                   "data_warnings":meta["notes"], "frames":{}}
+        # A cross absent from GMO ticker is not necessarily market-closed.
+        # Use the GMO-wide session state to validate Yahoo fallback freshness.
+        session_open = (meta["market"] == "OPEN" or
+                        (meta["source"] == "YAHOO" and
+                         any(x.get("status") == "OPEN" for x in ticker.values())))
         for frame in FRAMES:
-            result["frames"][frame] = (summarize(data[frame],frame,meta["source"],now,meta["market"]=="OPEN")
+            result["frames"][frame] = (summarize(data[frame],frame,meta["source"],now,session_open)
                                       if frame in data else {"status":"NOT_AVAILABLE"})
         result["three_methods"]=scenarios(result)
         if pair == "USD/CAD" and synthetic_usdcad is not None:
