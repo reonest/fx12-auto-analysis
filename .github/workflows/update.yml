@@ -1,32 +1,38 @@
-name: FX 12-pair refresh
+name: FX12 GMO-first production refresh
 on:
   schedule:
     - cron: '2,17,32,47 * * * *'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 concurrency:
   group: fx12-update
   cancel-in-progress: false
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: pip
-      - run: pip install -r requirements.txt
-      - run: python analyzer.py
-      - run: python site.py
-      - name: Commit dashboard
+      - name: Install dependencies
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs
-          git diff --cached --quiet && exit 0
-          git commit -m "Refresh FX dashboard"
-          git push
-# Schedule configuration refreshed
+          pip install -r requirements.txt
+          pip install 'icalendar>=6,<8'
+      - name: Verify source-selection and screening logic
+        run: python -m unittest -v test_dual_source_trial.py test_fx12_lab.py
+      - name: Refresh formal 12 with GMO-first and Yahoo fallback
+        run: python fx12_lab.py --all-pairs --with-news --output production_output/fx12_ai_context.json
+      - name: Build GPT briefing
+        run: python fx12_brief.py production_output/fx12_ai_context.json --out production_output/fx12_brief.md
+      - name: Upload research data without publishing GMO price series to Pages
+        uses: actions/upload-artifact@v4
+        with:
+          name: fx12-production-${{ github.run_id }}
+          path: production_output/
+          retention-days: 7
+      - name: Safety
+        run: echo "Read-only GMO source, Yahoo fallback. No broker orders or public GMO candle redistribution."
