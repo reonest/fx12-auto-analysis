@@ -23,7 +23,7 @@ jobs:
           pip install -r requirements.txt
           pip install 'icalendar>=6,<8'
       - name: Verify source-selection and screening logic
-        run: python -m unittest -v test_dual_source_trial.py test_fx12_lab.py
+        run: python -m unittest -v test_dual_source_trial.py test_fx12_lab.py test_publish_screening_metadata.py
       - name: Refresh formal 12 with GMO-first and Yahoo fallback
         run: python fx12_lab.py --all-pairs --with-news --output production_output/fx12_ai_context.json
       - name: Build GPT briefing
