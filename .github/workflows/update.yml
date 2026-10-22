@@ -4,7 +4,7 @@ on:
     - cron: '2,17,32,47 * * * *'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: fx12-update
   cancel-in-progress: false
@@ -34,5 +34,17 @@ jobs:
           name: fx12-production-${{ github.run_id }}
           path: production_output/
           retention-days: 7
+      - name: Publish price-free screening metadata for ChatGPT
+        run: python publish_screening_metadata.py production_output/fx12_ai_context.json docs/fx12_latest_screening.json
+      - name: Commit metadata summary only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/fx12_latest_screening.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Refresh GMO-first FX12 screening metadata"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
       - name: Safety
         run: echo "Read-only GMO source, Yahoo fallback. No broker orders or public GMO candle redistribution."
