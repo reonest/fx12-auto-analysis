@@ -3,18 +3,46 @@
 import json
 import sys
 from pathlib import Path
+from datetime import datetime, timezone, timedelta
 
 FORMAL = ["USD/JPY","EUR/JPY","GBP/JPY","AUD/JPY",
           "EUR/USD","GBP/USD","AUD/USD","USD/CAD",
           "CHF/JPY","NZD/JPY","EUR/AUD","EUR/NZD"]
 FRAMES = ("5m","10m","15m","1h","4h")
 VALID = {"OK","MARKET_CLOSED"}
+MAX_AGE = {"5m":20,"10m":35,"15m":45,"1h":125,"4h":420}
+
+def parse_time(value):
+    if not value:
+        return None
+    try:
+        moment=datetime.fromisoformat(value.replace("Z","+00:00"))
+        return moment.astimezone(timezone.utc) if moment.tzinfo else None
+    except (TypeError,ValueError,AttributeError):
+        return None
+
+def valid_bar(bar, frame, generation, declared_market):
+    closed=parse_time(bar.get("closed_utc"))
+    if not closed or not generation:
+        return False
+    age=(generation-closed).total_seconds()/60
+    if age < -1:
+        return False
+    if bar.get("status")=="OK":
+        return age <= MAX_AGE[frame]
+    if bar.get("status")=="MARKET_CLOSED" and declared_market=="CLOSED":
+        return age <= 7*24*60
+    return False
+
 
 def build(source):
     pairs = [p for p in source.get("pairs",[]) if p.get("role")=="FORMAL_12"]
     by_name = {p["pair"]:p for p in pairs}
     if len(by_name)!=12 or set(by_name)!=set(FORMAL):
         raise ValueError("Incorrect formal 12-pair set")
+    generation=parse_time(source.get("generated_utc"))
+    if not generation:
+        raise ValueError("Missing or invalid generation timestamp")
     output = []
     for pair in FORMAL:
         p=by_name[pair]
@@ -23,11 +51,16 @@ def build(source):
                       "closed_utc":candles.get(frame,{}).get("candle_closed_utc")}
                for frame in FRAMES}
         methods=p.get("three_methods",{})
-        quality = (all(times[t]["status"] in VALID and times[t]["closed_utc"] for t in ("5m","10m","1h"))
-                   or (pair=="USD/CAD" and bool(p.get("synthetic_screening"))))
+        direct_quality=all(valid_bar(times[t],t,generation,p.get("market_status")) for t in ("5m","10m","1h"))
+        synth=p.get("synthetic_screening") if pair=="USD/CAD" else None
+        synthetic_last=parse_time(synth.get("last_1h_candle_open_utc")) if isinstance(synth,dict) else None
+        synthetic_fresh=(bool(synth and synth.get("no_true_high_low_atr_adx") and
+                              synth.get("time_aligned_bars",0)>=90 and synthetic_last and
+                              -1 <= (generation-synthetic_last-timedelta(hours=1)).total_seconds()/60 <= 125))
+        quality=direct_quality or bool(synthetic_fresh)
         output.append({"pair":pair,"source":p.get("source"),"market_status":p.get("market_status"),
                        "frames":times,"screening_ready":quality,
-                       "screening_mode":"CLOSE_ONLY" if p.get("synthetic_screening") else "DIRECT_OHLC",
+                       "screening_mode":"CLOSE_ONLY" if synthetic_fresh else "DIRECT_OHLC",
                        "direction":methods.get("overall","中立"),
                        "environment":methods.get("environment","判定保留"),
                        "score_experimental":methods.get("score",0),
