@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-28T18:15:28.006136+00:00",
+  "generated_utc": "2026-10-28T19:11:56.249578+00:00",
   "pair_set_version": "2026-10-21",
   "mode": "GMO_PRIMARY_YAHOO_FALLBACK_METADATA_ONLY",
   "public_summary_only": true,
@@ -13,19 +13,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -35,9 +35,9 @@
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "買い方向",
-      "environment": "トレンド発生・加速",
-      "score_experimental": 3,
-      "trend_breakout": "条件付き候補",
+      "environment": "トレンド継続",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
       "range_reversal": "未成立",
       "warnings": []
     },
@@ -48,19 +48,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -83,19 +83,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -118,19 +118,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -153,19 +153,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -188,19 +188,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -223,19 +223,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -245,8 +245,8 @@
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "買い方向",
-      "environment": "レンジ・横ばい",
-      "score_experimental": 2,
+      "environment": "トレンド継続",
+      "score_experimental": 3,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
       "warnings": []
@@ -296,19 +296,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -331,19 +331,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -366,19 +366,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -387,9 +387,9 @@
       },
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
-      "direction": "中立",
-      "environment": "レンジ・横ばい",
-      "score_experimental": 0,
+      "direction": "売り方向",
+      "environment": "トレンド失速・移行期",
+      "score_experimental": 3,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
       "warnings": [
@@ -403,19 +403,19 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:10:00+00:00"
+          "closed_utc": "2026-10-28T19:10:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:15:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-10-28T18:00:00+00:00"
+          "closed_utc": "2026-10-28T19:00:00+00:00"
         },
         "4h": {
           "status": "OK",
@@ -436,9 +436,9 @@
   ],
   "top_candidates": [
     {
-      "pair": "USD/JPY",
+      "pair": "AUD/USD",
       "direction": "買い方向",
-      "environment": "トレンド発生・加速",
+      "environment": "トレンド継続",
       "source": "GMO",
       "score_experimental": 3
     },
@@ -450,8 +450,8 @@
       "score_experimental": 3
     },
     {
-      "pair": "EUR/NZD",
-      "direction": "買い方向",
+      "pair": "EUR/AUD",
+      "direction": "売り方向",
       "environment": "トレンド失速・移行期",
       "source": "YAHOO",
       "score_experimental": 3
