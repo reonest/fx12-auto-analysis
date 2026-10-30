@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-10-30T21:50:42.591834+00:00",
+  "generated_utc": "2026-10-30T22:34:48.425830+00:00",
   "pair_set_version": "2026-10-21",
   "mode": "GMO_PRIMARY_YAHOO_FALLBACK_METADATA_ONLY",
   "public_summary_only": true,
@@ -378,7 +378,7 @@
         },
         "1h": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-10-30T21:00:00+00:00"
+          "closed_utc": "2026-10-30T22:28:43+00:00"
         },
         "4h": {
           "status": "MARKET_CLOSED",
@@ -415,7 +415,7 @@
         },
         "1h": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-10-30T21:00:00+00:00"
+          "closed_utc": "2026-10-30T22:28:43+00:00"
         },
         "4h": {
           "status": "MARKET_CLOSED",
