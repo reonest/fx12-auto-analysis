@@ -1,0 +1,41 @@
+name: GMO FX fetch
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # 5分ごと(GitHub側の混雑で遅れることがある)
+  workflow_dispatch:         # 手動実行ボタン
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gmo-fetch
+  cancel-in-progress: true
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch GMO data
+        run: python fetch_gmo.py
+
+      # データは専用ブランチ「data」に、履歴を残さず毎回上書きする(リポジトリが膨らまない)
+      - name: Push to data branch
+        run: |
+          mkdir /tmp/out && cp -r data /tmp/out/
+          git config user.name  "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout --orphan data-tmp
+          git rm -rf --cached . > /dev/null
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -r /tmp/out/data .
+          git add data
+          git commit -m "data $(TZ=Asia/Tokyo date '+%m-%d %H:%M')" > /dev/null
+          git push -f origin HEAD:data
