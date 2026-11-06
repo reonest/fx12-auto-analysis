@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-06T22:36:30.726132+00:00",
+  "generated_utc": "2026-11-06T23:23:27.197582+00:00",
   "pair_set_version": "2026-10-21",
   "mode": "GMO_PRIMARY_YAHOO_FALLBACK_METADATA_ONLY",
   "public_summary_only": true,
@@ -277,8 +277,8 @@
           "closed_utc": null
         }
       },
-      "screening_ready": true,
-      "screening_mode": "CLOSE_ONLY",
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
       "direction": "買い方向",
       "environment": "合成終値・トレンド方向のみ",
       "score_experimental": 3,
@@ -378,7 +378,7 @@
         },
         "1h": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T22:00:00+00:00"
+          "closed_utc": "2026-11-06T23:00:00+00:00"
         },
         "4h": {
           "status": "MARKET_CLOSED",
@@ -415,7 +415,7 @@
         },
         "1h": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T22:00:00+00:00"
+          "closed_utc": "2026-11-06T23:00:00+00:00"
         },
         "4h": {
           "status": "MARKET_CLOSED",
@@ -434,15 +434,7 @@
       ]
     }
   ],
-  "top_candidates": [
-    {
-      "pair": "USD/CAD",
-      "direction": "買い方向",
-      "environment": "合成終値・トレンド方向のみ",
-      "source": "GMO_SYNTH_CLOSE_ONLY",
-      "score_experimental": 3
-    }
-  ],
+  "top_candidates": [],
   "source_counts": {
     "GMO": 9,
     "GMO_SYNTH_CLOSE_ONLY": 1,
