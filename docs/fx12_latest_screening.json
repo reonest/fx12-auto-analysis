@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-06T21:54:22.378044+00:00",
+  "generated_utc": "2026-11-06T22:36:30.726132+00:00",
   "pair_set_version": "2026-10-21",
   "mode": "GMO_PRIMARY_YAHOO_FALLBACK_METADATA_ONLY",
   "public_summary_only": true,
@@ -366,19 +366,19 @@
       "frames": {
         "5m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T21:50:00+00:00"
+          "closed_utc": "2026-11-06T22:34:28+00:00"
         },
         "10m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T21:50:00+00:00"
+          "closed_utc": "2026-11-06T22:20:00+00:00"
         },
         "15m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T21:45:00+00:00"
+          "closed_utc": "2026-11-06T22:15:00+00:00"
         },
         "1h": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T21:00:00+00:00"
+          "closed_utc": "2026-11-06T22:00:00+00:00"
         },
         "4h": {
           "status": "MARKET_CLOSED",
@@ -387,9 +387,9 @@
       },
       "screening_ready": false,
       "screening_mode": "DIRECT_OHLC",
-      "direction": "買い方向",
+      "direction": "中立",
       "environment": "レンジ・横ばい",
-      "score_experimental": 3,
+      "score_experimental": 0,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
       "warnings": [
@@ -403,19 +403,19 @@
       "frames": {
         "5m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T21:50:00+00:00"
+          "closed_utc": "2026-11-06T22:34:28+00:00"
         },
         "10m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T21:50:00+00:00"
+          "closed_utc": "2026-11-06T22:20:00+00:00"
         },
         "15m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T21:45:00+00:00"
+          "closed_utc": "2026-11-06T22:15:00+00:00"
         },
         "1h": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-06T21:00:00+00:00"
+          "closed_utc": "2026-11-06T22:00:00+00:00"
         },
         "4h": {
           "status": "MARKET_CLOSED",
@@ -424,9 +424,9 @@
       },
       "screening_ready": false,
       "screening_mode": "DIRECT_OHLC",
-      "direction": "買い方向",
+      "direction": "中立",
       "environment": "レンジ・横ばい",
-      "score_experimental": 3,
+      "score_experimental": 0,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
       "warnings": [
