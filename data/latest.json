@@ -1,0 +1,73 @@
+{
+ "updated_at_jst": "2026-11-08 02:09:46",
+ "updated_at_unix": 1794071386,
+ "market_status": "CLOSE",
+ "source": "GMOコイン外国為替FX 公開API(BID)。SBIの実勢ではない。注文価格はSBIで決める",
+ "pairs": {
+  "USD_JPY": {
+   "bid": "158.405",
+   "ask": "158.568",
+   "ticker_time": "2026-11-07T17:09:47.102734Z"
+  },
+  "EUR_JPY": {
+   "bid": "176.522",
+   "ask": "176.634",
+   "ticker_time": "2026-11-07T17:09:47.099788Z"
+  },
+  "GBP_JPY": {
+   "bid": "211.479",
+   "ask": "211.657",
+   "ticker_time": "2026-11-07T17:09:47.10075Z"
+  },
+  "AUD_JPY": {
+   "bid": "108.706",
+   "ask": "108.844",
+   "ticker_time": "2026-11-07T17:09:47.100136Z"
+  },
+  "CHF_JPY": {
+   "bid": "193.134",
+   "ask": "193.261",
+   "ticker_time": "2026-11-07T17:09:47.103399Z"
+  },
+  "NZD_JPY": {
+   "bid": "87.781",
+   "ask": "87.843",
+   "ticker_time": "2026-11-07T17:09:47.103062Z"
+  },
+  "EUR_USD": {
+   "bid": "1.11379",
+   "ask": "1.11451",
+   "ticker_time": "2026-11-07T17:09:47.105343Z"
+  },
+  "GBP_USD": {
+   "bid": "1.33447",
+   "ask": "1.33536",
+   "ticker_time": "2026-11-07T17:09:47.101733Z"
+  },
+  "AUD_USD": {
+   "bid": "0.6861",
+   "ask": "0.68656",
+   "ticker_time": "2026-11-07T17:09:47.104031Z"
+  },
+  "CAD_JPY": {
+   "bid": "112.164",
+   "ask": "112.239",
+   "ticker_time": "2026-11-07T17:09:47.101094Z"
+  },
+  "USD_CAD": {
+   "converted_from": "USD_JPY / CAD_JPY",
+   "note": "参考値(通貨強弱用)。直接の売買判断には使わない",
+   "mid": 1.41252
+  },
+  "EUR_AUD": {
+   "converted_from": "EUR_JPY / AUD_JPY",
+   "note": "参考値(通貨強弱用)。直接の売買判断には使わない",
+   "mid": 1.62333
+  },
+  "EUR_NZD": {
+   "converted_from": "EUR_JPY / NZD_JPY",
+   "note": "参考値(通貨強弱用)。直接の売買判断には使わない",
+   "mid": 2.01086
+  }
+ }
+}
