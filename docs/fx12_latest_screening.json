@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-16T00:19:36.156265+00:00",
+  "generated_utc": "2026-11-16T07:08:28.475603+00:00",
   "pair_set_version": "2026-10-21",
   "mode": "GMO_PRIMARY_YAHOO_FALLBACK_METADATA_ONLY",
   "public_summary_only": true,
@@ -13,29 +13,29 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "中立",
-      "environment": "判定保留",
+      "environment": "レンジ・横ばい",
       "score_experimental": 0,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
@@ -48,23 +48,23 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
@@ -83,23 +83,23 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
@@ -118,29 +118,29 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "売り方向",
-      "environment": "トレンド失速・移行期",
+      "environment": "トレンド継続",
       "score_experimental": 2,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
@@ -153,30 +153,30 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "売り方向",
       "environment": "トレンド発生・加速",
-      "score_experimental": 3,
+      "score_experimental": 4,
       "trend_breakout": "条件付き候補",
       "range_reversal": "未成立",
       "warnings": []
@@ -188,31 +188,31 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "売り方向",
-      "environment": "レンジ・横ばい",
-      "score_experimental": 2,
-      "trend_breakout": "未成立",
+      "environment": "トレンド発生・加速",
+      "score_experimental": 4,
+      "trend_breakout": "条件付き候補",
       "range_reversal": "未成立",
       "warnings": []
     },
@@ -223,29 +223,29 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "売り方向",
-      "environment": "トレンド失速・移行期",
+      "environment": "トレンド継続",
       "score_experimental": 2,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
@@ -296,30 +296,30 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "売り方向",
-      "environment": "レンジ・横ばい",
-      "score_experimental": 2,
+      "environment": "トレンド継続",
+      "score_experimental": 3,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
       "warnings": []
@@ -331,29 +331,29 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:00:00+00:00"
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
       "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "売り方向",
-      "environment": "トレンド失速・移行期",
+      "environment": "トレンド継続",
       "score_experimental": 2,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
@@ -366,32 +366,32 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
-          "status": "STALE",
-          "closed_utc": "2026-11-13T23:00:00+00:00"
+          "status": "OK",
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
-          "status": "STALE",
-          "closed_utc": "2026-11-13T20:00:00+00:00"
+          "status": "OK",
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
-      "screening_ready": false,
+      "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
-      "direction": "中立",
-      "environment": "判定保留",
-      "score_experimental": 0,
-      "trend_breakout": "判定保留",
-      "range_reversal": "判定保留",
+      "direction": "買い方向",
+      "environment": "トレンド失速・移行期",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
       "warnings": [
         "GMO_INSUFFICIENT_OR_NOT_LISTED"
       ]
@@ -403,32 +403,32 @@
       "frames": {
         "5m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:05:00+00:00"
         },
         "10m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:10:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "15m": {
           "status": "OK",
-          "closed_utc": "2026-11-16T00:15:00+00:00"
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "1h": {
-          "status": "STALE",
-          "closed_utc": "2026-11-13T23:00:00+00:00"
+          "status": "OK",
+          "closed_utc": "2026-11-16T07:00:00+00:00"
         },
         "4h": {
-          "status": "STALE",
-          "closed_utc": "2026-11-13T20:00:00+00:00"
+          "status": "OK",
+          "closed_utc": "2026-11-16T04:00:00+00:00"
         }
       },
-      "screening_ready": false,
+      "screening_ready": true,
       "screening_mode": "DIRECT_OHLC",
       "direction": "中立",
-      "environment": "判定保留",
+      "environment": "レンジ・横ばい",
       "score_experimental": 0,
-      "trend_breakout": "判定保留",
-      "range_reversal": "判定保留",
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
       "warnings": [
         "GMO_INSUFFICIENT_OR_NOT_LISTED"
       ]
@@ -440,7 +440,14 @@
       "direction": "売り方向",
       "environment": "トレンド発生・加速",
       "source": "GMO",
-      "score_experimental": 3
+      "score_experimental": 4
+    },
+    {
+      "pair": "GBP/USD",
+      "direction": "売り方向",
+      "environment": "トレンド発生・加速",
+      "source": "GMO",
+      "score_experimental": 4
     },
     {
       "pair": "USD/CAD",
@@ -448,13 +455,6 @@
       "environment": "合成終値・トレンド方向のみ",
       "source": "GMO_SYNTH_CLOSE_ONLY",
       "score_experimental": 3
-    },
-    {
-      "pair": "EUR/JPY",
-      "direction": "売り方向",
-      "environment": "トレンド継続",
-      "source": "GMO",
-      "score_experimental": 2
     }
   ],
   "source_counts": {
