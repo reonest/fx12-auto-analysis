@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-20T19:13:51.555200+00:00",
+  "generated_utc": "2026-11-21T00:50:32.657165+00:00",
   "pair_set_version": "2026-10-21",
   "mode": "GMO_PRIMARY_YAHOO_FALLBACK_METADATA_ONLY",
   "public_summary_only": true,
@@ -8,356 +8,374 @@
   "pairs": [
     {
       "pair": "USD/JPY",
-      "source": "GMO",
-      "market_status": "OPEN",
-      "frames": {
-        "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
-        }
-      },
-      "screening_ready": true,
-      "screening_mode": "DIRECT_OHLC",
-      "direction": "売り方向",
-      "environment": "レンジ・横ばい",
-      "score_experimental": 2,
-      "trend_breakout": "未成立",
-      "range_reversal": "未成立",
-      "warnings": []
-    },
-    {
-      "pair": "EUR/JPY",
-      "source": "GMO",
-      "market_status": "OPEN",
-      "frames": {
-        "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
-        }
-      },
-      "screening_ready": true,
-      "screening_mode": "DIRECT_OHLC",
-      "direction": "売り方向",
-      "environment": "トレンド継続",
-      "score_experimental": 3,
-      "trend_breakout": "未成立",
-      "range_reversal": "未成立",
-      "warnings": []
-    },
-    {
-      "pair": "GBP/JPY",
-      "source": "GMO",
-      "market_status": "OPEN",
-      "frames": {
-        "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
-        }
-      },
-      "screening_ready": true,
-      "screening_mode": "DIRECT_OHLC",
-      "direction": "売り方向",
-      "environment": "トレンド失速・移行期",
-      "score_experimental": 2,
-      "trend_breakout": "未成立",
-      "range_reversal": "未成立",
-      "warnings": []
-    },
-    {
-      "pair": "AUD/JPY",
-      "source": "GMO",
-      "market_status": "OPEN",
-      "frames": {
-        "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
-        }
-      },
-      "screening_ready": true,
-      "screening_mode": "DIRECT_OHLC",
-      "direction": "売り方向",
-      "environment": "トレンド失速・移行期",
-      "score_experimental": 2,
-      "trend_breakout": "未成立",
-      "range_reversal": "未成立",
-      "warnings": []
-    },
-    {
-      "pair": "EUR/USD",
-      "source": "GMO",
-      "market_status": "OPEN",
-      "frames": {
-        "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
-        }
-      },
-      "screening_ready": true,
-      "screening_mode": "DIRECT_OHLC",
-      "direction": "売り方向",
-      "environment": "レンジ・横ばい",
-      "score_experimental": 3,
-      "trend_breakout": "未成立",
-      "range_reversal": "未成立",
-      "warnings": []
-    },
-    {
-      "pair": "GBP/USD",
-      "source": "GMO",
-      "market_status": "OPEN",
-      "frames": {
-        "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
-        }
-      },
-      "screening_ready": true,
-      "screening_mode": "DIRECT_OHLC",
-      "direction": "売り方向",
-      "environment": "レンジ・横ばい",
-      "score_experimental": 3,
-      "trend_breakout": "未成立",
-      "range_reversal": "未成立",
-      "warnings": []
-    },
-    {
-      "pair": "AUD/USD",
-      "source": "GMO",
-      "market_status": "OPEN",
-      "frames": {
-        "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
-        }
-      },
-      "screening_ready": true,
-      "screening_mode": "DIRECT_OHLC",
-      "direction": "売り方向",
-      "environment": "トレンド継続",
-      "score_experimental": 2,
-      "trend_breakout": "未成立",
-      "range_reversal": "未成立",
-      "warnings": []
-    },
-    {
-      "pair": "USD/CAD",
-      "source": "GMO_SYNTH_CLOSE_ONLY",
+      "source": "YAHOO",
       "market_status": "UNKNOWN",
       "frames": {
         "5m": {
-          "status": "NOT_AVAILABLE",
-          "closed_utc": null
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:00:00+00:00"
         },
         "10m": {
-          "status": "NOT_AVAILABLE",
-          "closed_utc": null
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:00:00+00:00"
         },
         "15m": {
-          "status": "NOT_AVAILABLE",
-          "closed_utc": null
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:00:00+00:00"
         },
         "1h": {
-          "status": "NOT_AVAILABLE",
-          "closed_utc": null
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:00:00+00:00"
         },
         "4h": {
-          "status": "NOT_AVAILABLE",
-          "closed_utc": null
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
         }
       },
-      "screening_ready": true,
-      "screening_mode": "CLOSE_ONLY",
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
+      "direction": "売り方向",
+      "environment": "レンジ・横ばい",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
+    },
+    {
+      "pair": "EUR/JPY",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
+      "frames": {
+        "5m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "10m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "15m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "1h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
+        },
+        "4h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
+        }
+      },
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
+      "direction": "売り方向",
+      "environment": "トレンド継続",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
+    },
+    {
+      "pair": "GBP/JPY",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
+      "frames": {
+        "5m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "10m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "15m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "1h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
+        },
+        "4h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
+        }
+      },
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
+      "direction": "売り方向",
+      "environment": "トレンド継続",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
+    },
+    {
+      "pair": "AUD/JPY",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
+      "frames": {
+        "5m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "10m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "15m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "1h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
+        },
+        "4h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
+        }
+      },
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
+      "direction": "売り方向",
+      "environment": "トレンド継続",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
+    },
+    {
+      "pair": "EUR/USD",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
+      "frames": {
+        "5m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "10m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "15m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "1h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
+        },
+        "4h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
+        }
+      },
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
+      "direction": "売り方向",
+      "environment": "レンジ・横ばい",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
+    },
+    {
+      "pair": "GBP/USD",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
+      "frames": {
+        "5m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "10m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "15m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "1h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
+        },
+        "4h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
+        }
+      },
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
+      "direction": "売り方向",
+      "environment": "トレンド継続",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
+    },
+    {
+      "pair": "AUD/USD",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
+      "frames": {
+        "5m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "10m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "15m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "1h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
+        },
+        "4h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
+        }
+      },
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
+      "direction": "売り方向",
+      "environment": "トレンド継続",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
+    },
+    {
+      "pair": "USD/CAD",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
+      "frames": {
+        "5m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:40:00+00:00"
+        },
+        "10m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:00:00+00:00"
+        },
+        "15m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:00:00+00:00"
+        },
+        "1h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
+        },
+        "4h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
+        }
+      },
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
       "direction": "買い方向",
-      "environment": "合成終値・トレンド方向のみ",
+      "environment": "トレンド継続",
       "score_experimental": 3,
-      "trend_breakout": "判定保留",
-      "range_reversal": "判定保留",
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
       "warnings": [
         "TRY_GMO_SYNC_CLOSE_FIRST",
-        "SCREENING_ONLY_NOT_OHLC"
+        "SYNTH_MISSING_YAHOO_BACKUP"
       ]
     },
     {
       "pair": "CHF/JPY",
-      "source": "GMO",
-      "market_status": "OPEN",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
       "frames": {
         "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
         },
         "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
         }
       },
-      "screening_ready": true,
-      "screening_mode": "DIRECT_OHLC",
-      "direction": "中立",
-      "environment": "レンジ・横ばい",
-      "score_experimental": 0,
-      "trend_breakout": "未成立",
-      "range_reversal": "未成立",
-      "warnings": []
-    },
-    {
-      "pair": "NZD/JPY",
-      "source": "GMO",
-      "market_status": "OPEN",
-      "frames": {
-        "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
-        },
-        "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
-        },
-        "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
-        }
-      },
-      "screening_ready": true,
+      "screening_ready": false,
       "screening_mode": "DIRECT_OHLC",
       "direction": "売り方向",
       "environment": "トレンド継続",
       "score_experimental": 2,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
+    },
+    {
+      "pair": "NZD/JPY",
+      "source": "YAHOO",
+      "market_status": "UNKNOWN",
+      "frames": {
+        "5m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "10m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "15m": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
+        },
+        "1h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
+        },
+        "4h": {
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
+        }
+      },
+      "screening_ready": false,
+      "screening_mode": "DIRECT_OHLC",
+      "direction": "売り方向",
+      "environment": "トレンド継続",
+      "score_experimental": 2,
+      "trend_breakout": "未成立",
+      "range_reversal": "未成立",
+      "warnings": [
+        "GMO_INSUFFICIENT_OR_NOT_LISTED"
+      ]
     },
     {
       "pair": "EUR/AUD",
@@ -365,30 +383,30 @@
       "market_status": "UNKNOWN",
       "frames": {
         "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
         },
         "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
         }
       },
-      "screening_ready": true,
+      "screening_ready": false,
       "screening_mode": "DIRECT_OHLC",
       "direction": "買い方向",
-      "environment": "トレンド継続",
+      "environment": "トレンド失速・移行期",
       "score_experimental": 2,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
@@ -402,27 +420,27 @@
       "market_status": "UNKNOWN",
       "frames": {
         "5m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "10m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:10:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "15m": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T22:30:00+00:00"
         },
         "1h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T19:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T23:00:00+00:00"
         },
         "4h": {
-          "status": "OK",
-          "closed_utc": "2026-11-20T16:00:00+00:00"
+          "status": "MARKET_CLOSED",
+          "closed_utc": "2026-11-20T20:00:00+00:00"
         }
       },
-      "screening_ready": true,
+      "screening_ready": false,
       "screening_mode": "DIRECT_OHLC",
       "direction": "買い方向",
       "environment": "トレンド継続",
@@ -434,33 +452,11 @@
       ]
     }
   ],
-  "top_candidates": [
-    {
-      "pair": "EUR/JPY",
-      "direction": "売り方向",
-      "environment": "トレンド継続",
-      "source": "GMO",
-      "score_experimental": 3
-    },
-    {
-      "pair": "EUR/USD",
-      "direction": "売り方向",
-      "environment": "レンジ・横ばい",
-      "source": "GMO",
-      "score_experimental": 3
-    },
-    {
-      "pair": "GBP/USD",
-      "direction": "売り方向",
-      "environment": "レンジ・横ばい",
-      "source": "GMO",
-      "score_experimental": 3
-    }
-  ],
+  "top_candidates": [],
   "source_counts": {
-    "GMO": 9,
-    "GMO_SYNTH_CLOSE_ONLY": 1,
-    "YAHOO": 2,
+    "GMO": 0,
+    "GMO_SYNTH_CLOSE_ONLY": 0,
+    "YAHOO": 12,
     "UNAVAILABLE": 0
   },
   "note": "Ranking metadata only; current SBI Bid/Ask and news must be checked before orders."
