@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-11-27T23:40:23.913110+00:00",
+  "generated_utc": "2026-11-28T04:59:14.560865+00:00",
   "pair_set_version": "2026-10-21",
   "mode": "GMO_PRIMARY_YAHOO_FALLBACK_METADATA_ONLY",
   "public_summary_only": true,
@@ -39,7 +39,9 @@
       "score_experimental": 2,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "EUR/JPY",
@@ -74,7 +76,9 @@
       "score_experimental": 0,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "GBP/JPY",
@@ -109,7 +113,9 @@
       "score_experimental": 0,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "AUD/JPY",
@@ -144,7 +150,9 @@
       "score_experimental": 0,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "EUR/USD",
@@ -179,7 +187,9 @@
       "score_experimental": 3,
       "trend_breakout": "条件付き候補",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "GBP/USD",
@@ -214,7 +224,9 @@
       "score_experimental": 1,
       "trend_breakout": "条件付き候補",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "AUD/USD",
@@ -249,7 +261,9 @@
       "score_experimental": 0,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "USD/CAD",
@@ -322,7 +336,9 @@
       "score_experimental": 3,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "NZD/JPY",
@@ -357,7 +373,9 @@
       "score_experimental": 0,
       "trend_breakout": "未成立",
       "range_reversal": "未成立",
-      "warnings": []
+      "warnings": [
+        "SESSION_TRUNCATED_4H_REMOVED:1"
+      ]
     },
     {
       "pair": "EUR/AUD",
@@ -366,19 +384,19 @@
       "frames": {
         "5m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-27T22:34:46+00:00"
+          "closed_utc": "2026-11-27T22:30:00+00:00"
         },
         "10m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-27T22:20:00+00:00"
+          "closed_utc": "2026-11-27T22:30:00+00:00"
         },
         "15m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-27T22:15:00+00:00"
+          "closed_utc": "2026-11-27T22:30:00+00:00"
         },
         "1h": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-27T23:29:46+00:00"
+          "closed_utc": "2026-11-27T23:00:00+00:00"
         },
         "4h": {
           "status": "MARKET_CLOSED",
@@ -403,19 +421,19 @@
       "frames": {
         "5m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-27T22:34:46+00:00"
+          "closed_utc": "2026-11-27T22:30:00+00:00"
         },
         "10m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-27T22:20:00+00:00"
+          "closed_utc": "2026-11-27T22:30:00+00:00"
         },
         "15m": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-27T22:15:00+00:00"
+          "closed_utc": "2026-11-27T22:30:00+00:00"
         },
         "1h": {
           "status": "MARKET_CLOSED",
-          "closed_utc": "2026-11-27T23:29:46+00:00"
+          "closed_utc": "2026-11-27T23:00:00+00:00"
         },
         "4h": {
           "status": "MARKET_CLOSED",
